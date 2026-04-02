@@ -45,9 +45,21 @@ A corporate RESTful API developed to manage inventory, suppliers, and parts inbo
 ![Docker](https://img.shields.io/badge/Docker-Enabled-blue)
 ![Deploy](https://img.shields.io/badge/Deploy-Render-purple)
 
-### 🌐 Live Demo
+###  Live Demo
 The project is in production! You can test the API directly in your browser through the interactive Swagger interface:
-👉 **[Test API on Swagger](https://estoque-api-p7dw.onrender.com/swagger-ui/index.html#/)**
+ **[Test API on Swagger](https://estoque-api-p7dw.onrender.com/swagger-ui/index.html#/)**
 
-### 💼 Implemented Business Rules
-This API is not just a simple CRUD. It enforces strict day-to-day warehouse
+###  Implemented Business Rules
+This API is not just a simple CRUD. It enforces strict day-to-day warehouse rules:
+- **Inventory Protection:** It is impossible to withdraw a quantity greater than what is available (Prevention of negative stock).
+- **Strict Validation (Fail-Fast):** The system blocks the registration of parts without a name, SKU, or with negative initial quantities (`@Valid`).
+- **Global Error Handling:** Server exceptions are caught by a `@ControllerAdvice`, returning friendly and clear JSON responses (Status 400 - Bad Request) instead of generic server errors (Status 500).
+
+###  Technologies and Architecture
+- **Language:** Java 21
+- **Framework:** Spring Boot (Web, Data JPA, Validation)
+- **Database:** SQLite (Ideal for quick demonstrations)
+- **Documentation:** OpenAPI 3 / Swagger
+- **DevOps:** Docker (Multi-stage build) and Cloud Deploy via Render.
+- **Architecture:** Layered Pattern (Controller, Service, Repository) clearly separating business rules from HTTP routing.
+
