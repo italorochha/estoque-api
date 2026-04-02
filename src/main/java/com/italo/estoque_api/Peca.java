@@ -32,17 +32,6 @@ public class Peca {
         this.quantidade = quantidade;
         this.fornecedor = fornecedor;
     }
-    public Peca registrarSaida(Long id, int quantidadeSaida) {
-        Peca pecaNoBanco = pecaRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Peça não encontrada no sistema!"));
-        if (quantidadeSaida > pecaNoBanco.getQuantidade()) {
-            throw new RuntimeException("Estoque insuficiente! Temos apenas " + pecaNoBanco.getQuantidade() + " unidades da peça.");
-        }
-
-        int novoTotal = pecaNoBanco.getQuantidade() - quantidadeSaida;
-        pecaNoBanco.setQuantidade(novoTotal);
-        return pecaRepo.save(pecaNoBanco);
-    }
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
