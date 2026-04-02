@@ -3,7 +3,7 @@ package com.italo.estoque_api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service // 🌟 Avisa o Spring que essa classe é o Cérebro (Regras de Negócio)
+@Service
 public class PecaService {
     @Autowired
     private PecaRepository pecaRepo;
