@@ -60,4 +60,9 @@ public class EstoqueController {
     public List<Movimentacao> emitirExtratoDaPeca(@PathVariable("id") Long id) {
         return movimentacaoRepo.findByPecaIdOrderByDataHoraDesc(id);
     }
+    @GetMapping("/pecas/alerta-estoque")
+    public List<Peca> emitirAlertaEstoque(
+            @RequestParam(value = "limite", defaultValue = "5") int limite) {
+        return pecaService.buscarPecasEmAlerta(limite);
+    }
 }

@@ -1,6 +1,7 @@
 package com.italo.estoque_api;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service; // 🌟 Necessário para capturar a hora atual
@@ -50,5 +51,8 @@ public class PecaService {
         movimentacaoRepo.save(mov);
 
         return pecaAtualizada;
+    }
+    public List<Peca> buscarPecasEmAlerta(int limite) {
+        return pecaRepo.findByQuantidadeLessThanEqual(limite);
     }
 }
