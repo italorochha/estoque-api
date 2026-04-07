@@ -24,6 +24,8 @@ public class EstoqueController {
     private PecaRepository pecaRepo;
     @Autowired
     private PecaService pecaService;
+    @Autowired
+    private MovimentacaoRepository movimentacaoRepo;
     @PostMapping("/fornecedores")
     public Fornecedor cadastrarFornecedor(@Valid @RequestBody Fornecedor novoFornecedor) {
         return fornecedorRepo.save(novoFornecedor);
@@ -53,5 +55,9 @@ public class EstoqueController {
     @GetMapping("/fornecedores/{fornecedorId}/pecas")
     public List<Peca> listarPecasDoFornecedor(@PathVariable("fornecedorId") Long fornecedorId) {
         return pecaRepo.findByFornecedorId(fornecedorId);
+    }
+    @GetMapping("/pecas/{id}/movimentacoes")
+    public List<Movimentacao> emitirExtratoDaPeca(@PathVariable("id") Long id) {
+        return movimentacaoRepo.findByPecaIdOrderByDataHoraDesc(id);
     }
 }
