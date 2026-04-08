@@ -3,6 +3,9 @@ package com.italo.estoque_api;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,8 +64,22 @@ public class EstoqueController {
         return movimentacaoRepo.findByPecaIdOrderByDataHoraDesc(id);
     }
     @GetMapping("/pecas/alerta-estoque")
-    public List<Peca> emitirAlertaEstoque(
+    public List<PecaResponseDTO> emitirAlertaEstoque(
             @RequestParam(value = "limite", defaultValue = "5") int limite) {
-        return pecaService.buscarPecasEmAlerta(limite);
+
+        List<Peca> pecasEmAlerta = pecaService.buscarPecasEmAlerta(limite);
+        return pecasEmAlerta.stream()
+                .map(PecaResponseDTO::new)
+                .toList();
+    }
+    @GetMapping("/pecas/relatorio")
+    public ResponseEntity<byte[]> baixarRelatorioExcel() {
+        String conteudoCsv = pecaService.gerarRelatorioCsv();
+        byte[] arquivoFisico = conteudoCsv.getBytes();
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=relatorio-inventario.csv")
+                // Define o tipo do arquivo
+                .contentType(MediaType.parseMediaType("text/csv"))
+                .body(arquivoFisico);
     }
 }
