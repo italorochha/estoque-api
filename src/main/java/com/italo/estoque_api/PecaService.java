@@ -70,6 +70,23 @@ public class PecaService {
         .append(peca.getQuantidade()).append(";")
         .append(nomeFornecedor).append("\n");
         }
+        return csv.toString();
+    }
+
+    public String gerarRelatorioCsv1() {
+        List<Peca> todasPecas = pecaRepo.findAll();
+        StringBuilder csv = new StringBuilder();
+
+        csv.append("ID;Nome;Código SKU;Quantidade;Fornecedor\n");
+
+        for (Peca peca : todasPecas) {
+            String nomeFornecedor = peca.getFornecedor() != null ? peca.getFornecedor().getRazaoSocial() : "Sem Fornecedor";
+            csv.append(peca.getId()).append(";")
+    .append(peca.getNome()).append(";")
+    .append(peca.getCodigoSku()).append(";")
+    .append(peca.getQuantidade()).append(";")
+    .append(nomeFornecedor).append("\n");
+        }
 
         return csv.toString();
     }

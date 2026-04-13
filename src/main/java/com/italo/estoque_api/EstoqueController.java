@@ -82,4 +82,15 @@ public class EstoqueController {
                 .contentType(MediaType.parseMediaType("text/csv"))
                 .body(arquivoFisico);
     }
-}
+
+    @GetMapping("/pecas/relatorio")
+    public ResponseEntity<byte[]> baixarRelatorioExcel1() {
+        String conteudoCsv = pecaService.gerarRelatorioCsv();
+        byte[] arquivoFisico = conteudoCsv.getBytes();
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=relatorio-inventario.csv")
+                // Define o tipo do arquivo
+                .contentType(MediaType.parseMediaType("text/csv"))
+                .body(arquivoFisico);
+    }}
