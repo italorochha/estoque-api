@@ -25,6 +25,7 @@ Diferente de um CRUD básico, esta API implementa padrões arquiteturais de merc
 - **Relatórios de Business Intelligence:** Exportação dinâmica de dados para formato .csv, pronto para análise em Excel ou dashboards corporativos.
 - **Segurança e DTOs (Data Transfer Objects):** Uso de Java Records para blindar a camada de persistência, evitando exposição de dados sensíveis do banco.
 - **Arquitetura em Camadas (MVC):** Separação clara de responsabilidades entre Controladores, Serviços (Regras de Negócio) e Repositórios.
+- **Autenticação e Autorização (JWT):** Implementação de Spring Security com tokens JWT (JSON Web Token) em arquitetura Stateless. Senhas de usuários são protegidas no banco de dados utilizando criptografia BCrypt. Acesso aos endpoints é estritamente controlado por níveis de permissão.
 
 ### Tecnologias
 - **Linguagem:** Java 21 (LTS)
@@ -49,6 +50,7 @@ Unlike a basic CRUD, this API implements industry-standard architectural pattern
 - **Business Intelligence Reports:** Dynamic data export to .csv format, ready for analysis in Excel or corporate dashboards.
 - **Security & DTOs (Data Transfer Objects):** Implementation of Java Records to shield the persistence layer, preventing the exposure of sensitive database data.
 - **Layered Architecture (MVC):** Clear separation of concerns between Controllers, Services (Business Logic), and Repositories.
+- **Authentication and Authorization (JWT):** Implementation of Spring Security with JWT (JSON Web Token) in a Stateless architecture. User passwords are encrypted in the database using BCrypt hashing. Endpoint access is strictly controlled by role-based permissions.
 
 ### Tech Stack
 - **Language:** Java 21 (LTS)
