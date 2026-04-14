@@ -1,4 +1,4 @@
-package com.italo.estoque_api;
+package com.italo.estoque_api.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

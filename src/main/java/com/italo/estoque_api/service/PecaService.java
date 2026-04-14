@@ -1,10 +1,15 @@
-package com.italo.estoque_api;
+package com.italo.estoque_api.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.italo.estoque_api.model.Movimentacao;
+import com.italo.estoque_api.model.Peca;
+import com.italo.estoque_api.repository.MovimentacaoRepository;
+import com.italo.estoque_api.repository.PecaRepository;
 
 @Service
 public class PecaService {

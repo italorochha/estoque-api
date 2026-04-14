@@ -1,4 +1,4 @@
-package com.italo.estoque_api;
+package com.italo.estoque_api.security;
 
 import java.util.HashMap;
 import java.util.Map;

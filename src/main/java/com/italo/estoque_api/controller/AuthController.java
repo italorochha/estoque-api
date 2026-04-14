@@ -1,4 +1,4 @@
-package com.italo.estoque_api;
+package com.italo.estoque_api.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.italo.estoque_api.dto.AuthDTOs;
+import com.italo.estoque_api.model.Usuario;
+import com.italo.estoque_api.repository.UsuarioRepository;
+import com.italo.estoque_api.security.TokenService;
 
 @RestController
 @RequestMapping("/api/auth")

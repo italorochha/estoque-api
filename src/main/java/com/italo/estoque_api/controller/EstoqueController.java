@@ -1,4 +1,4 @@
-package com.italo.estoque_api;
+package com.italo.estoque_api.controller;
 
 import java.util.List;
 
@@ -14,6 +14,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.italo.estoque_api.dto.PecaResponseDTO;
+import com.italo.estoque_api.model.Fornecedor;
+import com.italo.estoque_api.model.Movimentacao;
+import com.italo.estoque_api.model.Peca;
+import com.italo.estoque_api.repository.FornecedorRepository;
+import com.italo.estoque_api.repository.MovimentacaoRepository;
+import com.italo.estoque_api.repository.PecaRepository;
+import com.italo.estoque_api.service.PecaService;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;

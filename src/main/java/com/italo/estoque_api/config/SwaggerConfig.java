@@ -1,4 +1,4 @@
-package com.italo.estoque_api;
+package com.italo.estoque_api.config;
 
 import org.springframework.context.annotation.Configuration;
 

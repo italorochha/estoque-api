@@ -1,4 +1,6 @@
-package com.italo.estoque_api;
+package com.italo.estoque_api.dto;
+
+import com.italo.estoque_api.model.Peca;
 
 public record PecaResponseDTO(
         Long id,
