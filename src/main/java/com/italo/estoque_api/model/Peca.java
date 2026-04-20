@@ -21,7 +21,7 @@ public class Peca {
     @Min(value = 0, message = "A quantidade inicial não pode ser menor que zero!")
     private int quantidade;
 
-    @ManyToOne
+    @ManyToOne(cascade = jakarta.persistence.CascadeType.ALL)
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
 
